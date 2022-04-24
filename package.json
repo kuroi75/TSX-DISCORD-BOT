@@ -1,0 +1,14 @@
+{
+  "name": "scoriaxmode",
+  "version": "1.0.0",
+  "description": "ScoriaX E-Sports",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TSX | Kuroi (くん)",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  }
+}
