@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const { token } = require('./config.json');
 const { MessageEmbed } = require('discord.js');
-const prefix = "TSX";
+// const prefix = "TSX";
 const fs = require('fs');
 const command = require('./commands/command');
 client.command = new Discord.Collection();
@@ -12,6 +12,8 @@ for(const file of commandsFile){
     // client.commands.set(command.name, command);
 }
 
+
+
 client.on('ready', () => {
     console.log('TSX bot is online')
 });
@@ -20,8 +22,7 @@ client.on('ready', () => {
 
 client.on('message', message =>{
     if(command === 'TSX RULES'){
-        client.command.get('command').execute(message, args, Discord);
-        message.channel.send(newEmbed);
+        client.command.get('command').execute(message, args, Embed, Discord);
     }
 });
 
@@ -33,6 +34,12 @@ client.on('message', message =>{
 
 client.on('message', message =>{
     if(message.content === 'TSX discord link'){
+        message.channel.send('https://discord.gg/umqcTGsV7e');
+    }
+});
+
+client.on('message', message =>{
+    if(message.content === 'TSX invite link'){
         message.channel.send('https://discord.gg/umqcTGsV7e');
     }
 });
@@ -62,14 +69,29 @@ client.on('message', message =>{
 });
 
 client.on('message', message =>{
+    if(message.content === 'TSX help'){
+        message.reply("Please knock <@549869299775307777> or <@365687071547064322>");
+    }
+});
+
+client.on('message', message =>{
     if(message.content === 'TSX info'){
         message.reply("**We, Team Scoria-X are a Bangladeshi E-Sports Team which started its journey in 21 March 2020. We started with a dream which leads to be the Best Gaming Organization in Bangladesh. We wanted to represent our country in the global e-sports and despite our players talents. And the dream is now a goal, a mission to represent Bangladesh in the International E-sports Level.**");
     }
 });
 
 client.on('message', message =>{
-    if(message.content === 'TSX bot ping'){
-        message.channel.send('TSX BOT Ping is....:robot:').then(msg => {
+    if(message.content === 'bot ping'){
+        message.channel.send('TSX 🤖BOT Ping is....').then(msg => {
+            const ping = msg.createdTimestamp - message.createdTimestamp;
+            msg.edit(`<@952082586329567232>🤖BOT Ping is ${ping} ms`);
+        })
+    }
+});
+
+client.on('message', message =>{
+    if(message.content === 'TSX ping'){
+        message.channel.send('TSX 🤖BOT Ping is....').then(msg => {
             const ping = msg.createdTimestamp - message.createdTimestamp;
             msg.edit(`<@952082586329567232>🤖BOT Ping is ${ping} ms`);
         })
